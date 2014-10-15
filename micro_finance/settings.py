@@ -22,6 +22,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'micro_admin'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -67,6 +68,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR + '/static',)
 
 TEMPLATE_DIRS = (BASE_DIR +'/templates',)
+
+MEDIA_ROOT = BASE_DIR
 
 
 TEMPLATE_LOADERS = (
