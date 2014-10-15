@@ -12,7 +12,8 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+PHOTO_PATH = os.path.join(BASE_DIR, 'images/users')
+SIGNATURE_PATH = os.path.join(BASE_DIR, 'images/signature')
 # Application definition
 
 INSTALLED_APPS = (
@@ -22,6 +23,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'micro_admin'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -68,6 +70,7 @@ STATICFILES_DIRS = (BASE_DIR + '/static',)
 
 TEMPLATE_DIRS = (BASE_DIR +'/templates',)
 
+MEDIA_ROOT = BASE_DIR
 
 TEMPLATE_LOADERS = (
     ("django.template.loaders.cached.Loader", (
