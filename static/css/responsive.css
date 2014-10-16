@@ -1,0 +1,78 @@
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px)  {
+
+
+ }
+@media (min-width: 992px)  and (max-width :1199px) { 
+.login-page {
+width: 70%;
+/* margin-left: 350px; */
+/* margin-top: 50px; */
+margin: auto;
+margin-top: 50px;
+}
+}
+	
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width :991px) { 
+.login-page {
+width: 80%;
+margin: auto;
+/* margin-left: 350px; */
+margin-top: 50px;
+}
+
+}
+
+@media (min-width: 481px) and (max-width: 767px){ 
+body{
+	background:#fff;	
+}
+.login-page {
+width: 80%;
+margin: auto;
+
+margin-top: 50px;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+border-color: #e7e7e7;
+background: #fff;
+}
+.navbar-default .navbar-nav>li>a {
+color: #000;
+}
+.navbar-default .navbar-nav>li>a:hover {
+color: #fff;
+background:#019090;
+border-radius:3px;
+
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+background-color: #fff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+color: #fff;
+background:#019090;
+}
+.navbar-default .navbar-toggle {
+border-color: #fff;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+color: #000;
+display:block;
+}
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+color: #fff;
+background:#019090;
+border-radius:3px;
+
+}
+	/*.blog-form .table-bordered{
+			border:1px solid #ddd;
+	}*/
+}

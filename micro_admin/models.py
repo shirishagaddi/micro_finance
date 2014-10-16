@@ -43,7 +43,7 @@ class UserManager(BaseUserManager):
 
         if not username:
             raise ValueError('Users must have an username')
-
+        user = self.model(username=username)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -65,7 +65,7 @@ class User(AbstractBaseUser):
     gender = models.CharField(choices = GENDER_TYPES ,max_length = 10)
     branch = models.ForeignKey(Branch)
     user_roles = models.CharField(choices= USER_ROLES, max_length=20)
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(default='2000-06-04')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     country = models.CharField(max_length=50)
@@ -73,8 +73,8 @@ class User(AbstractBaseUser):
     district = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     area = models.CharField(max_length=150)
-    mobile = models.BigIntegerField()
-    pincode = models.BigIntegerField()
+    mobile = models.BigIntegerField(default='0')
+    pincode = models.BigIntegerField(default='0')
 
     objects = UserManager()
 
