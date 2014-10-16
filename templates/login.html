@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block stage %}
+<!--body starts here-->
+<div class="row mar1">
+    <div class="container">
+        <div class="login-page">
+            <fieldset>
+                <legend>Login</legend>
+                <form id="loginform" role="form" action="/login/">
+                {% csrf_token %}
+                <div id="error">
+                </div>
+                <div class="form-group ">
+                    <label for="exampleInputEmail1" class="color-text">User Name</label>
+                    <input type="Text" class="text-style" >
+                </div>
+                <div class="form-group ">
+                    <label for="exampleInputEmail1" class="color-text">Password</label>
+                    <input type="password" class="text-style" >
+                </div>
+                <div class="btns">
+                    <i class="fa fa-check-square-o tick-icon"></i>
+                    <input type="submit" value="Login"  class="login-btn" >
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</div>
+<!--body ends above-->
+</div>
+<script src="js/my-script.js"></script>
+<script type="text/javascript">
+    $(".login-btn").click(function(e) {
+      e.preventDefault();
+      $.post("/login/", $("form#loginform").serialize(), function(data) {
+        if (data.error){
+          $("p.error").remove();
+          $("#error").prepend("<p class='error'>"+data.message+"</p>");
+        }else{
+          window.location = '.' ; 
+        }
+        
+        
+      }, 'json');
+      
+    });
+    
+</script>
+</body>
+</html>
+{% endblock %}

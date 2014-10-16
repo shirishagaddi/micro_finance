@@ -34,8 +34,8 @@ class Branch(models.Model):
     district = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     area = models.CharField(max_length=150)
-    phone_number = models.BigIntegerField()
-    pincode = models.BigIntegerField()
+    phone_number = models.IntegerField()
+    pincode = models.IntegerField()
 
 
 class UserManager(BaseUserManager):

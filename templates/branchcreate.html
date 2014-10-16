@@ -1,0 +1,76 @@
+{% extends 'home.html' %}
+{% block stage %}
+<script src="/static/js/my-script.js"></script>
+<div class="container form">
+    <div class="col-lg-offset-3 col-lg-3 col-lg-offset-3 form">
+        <fieldset>
+            <legend>Branch</legend>
+            <form class="form-horizontal" role="form" action="/microfinanceadmin/createbranch/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Branch Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Opening Date</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="opening_date" id="datepicker">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Country</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="country">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">State</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="state">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">District</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="district">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">City</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="city">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Area</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="area">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Phone Number</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="phone_number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Pin-code</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control query-style" name="pincode">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-8">
+                        <i class="fa fa-check submit-icon"></i>
+                        <input type="submit" value="Submit"  class="submit-btn" >
+                        <i class="fa fa-times submit-icon"></i>
+                        <input type="submit" value="Cancel"  class="cancel-btn" >
+                    </div>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>
+{% endblock %}
