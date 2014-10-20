@@ -28,6 +28,7 @@ padding: 20px 30px;
 box-shadow: 4px 4px 2px #ddd;
 margin-top: 20px;
 }
+
 }
 	
 /* Small devices (tablets, 768px and up) */
@@ -66,6 +67,7 @@ padding: 20px 30px;
 box-shadow: 4px 4px 2px #ddd;
 margin-top: 20px;
 }
+
 }
 @media (min-width: 481px) and (max-width: 767px){ 
 body{

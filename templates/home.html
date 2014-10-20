@@ -47,7 +47,7 @@
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench home-color"></i>Admin<span class="caret"></span></a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="{% url 'micro_admin:userslist' %}">Users</a></li>
-                            <li><a href="#">Branch</a></li>
+                            <li><a href="{% url 'micro_admin:createbranch'%}">Branch</a></li>
                           </ul>
                         </li>
                         <li class="dropdown">
@@ -88,7 +88,7 @@
               </a>
             </li>
             <li>
-              <a href="#" class="anchor-side-bar">
+              <a href="{% url 'micro_admin:createclient'%}" class="anchor-side-bar">
               <span>Client</span>
               <i class="fa fa-user users-icon"></i>
               </a>

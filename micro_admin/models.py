@@ -34,8 +34,8 @@ class Branch(models.Model):
     district = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     area = models.CharField(max_length=150)
-    phone_number = models.BigIntegerField()
-    pincode = models.BigIntegerField()
+    phone_number = models.IntegerField()
+    pincode = models.IntegerField()
 
 
 class UserManager(BaseUserManager):
@@ -62,7 +62,7 @@ class User(AbstractBaseUser):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField( max_length=255, unique=True)
     first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100, default='', null=True)
+    last_name = models.CharField(max_length=100, null=True)
     gender = models.CharField(choices = GENDER_TYPES ,max_length = 10)
     branch = models.ForeignKey(Branch)
     user_roles = models.CharField(choices= USER_ROLES, max_length=20)
@@ -74,8 +74,8 @@ class User(AbstractBaseUser):
     district = models.CharField(max_length=50, null=True)
     city = models.CharField(max_length=50, null=True)
     area = models.CharField(max_length=150, null=True)
-    mobile = models.BigIntegerField(default='0', null=True)
-    pincode = models.BigIntegerField(default='0', null=True)
+    mobile = models.IntegerField(default=False, null=True)
+    pincode = models.CharField(default='0', max_length=10, null=True)
 
     objects = UserManager()
 
@@ -92,7 +92,7 @@ class Clients(models.Model):
     account_type = models.CharField(choices=ACCOUNT_TYPES, max_length=20)
     account_number = models.CharField(max_length=50, unique=True)
     date_of_birth = models.DateField()
-    blood_group = models.CharField(max_length=10)
+    blood_group = models.CharField(max_length=10,null=True)
     gender = models.CharField(choices = GENDER_TYPES ,max_length=10)
     clent_role = models.CharField(choices=CLIENT_ROLES, max_length=20)
     occupation = models.CharField(max_length=200)
@@ -103,10 +103,10 @@ class Clients(models.Model):
     district = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
     area = models.CharField(max_length=150)
-    mobile = models.BigIntegerField()
-    pincode = models.BigIntegerField()
-    photo = models.ImageField(upload_to=settings.PHOTO_PATH)
-    signature = models.ImageField(upload_to =settings.SIGNATURE_PATH)
+    mobile = models.CharField(max_length=20,default=True,null=True)
+    pincode = models.CharField(max_length=20,default=True,null=True)
+    photo = models.ImageField(upload_to=settings.PHOTO_PATH,null=True)
+    signature = models.ImageField(upload_to =settings.SIGNATURE_PATH,null=True)
     is_active = models.BooleanField(default=True)
     branch = models.ForeignKey(Branch)
 

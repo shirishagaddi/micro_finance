@@ -7,4 +7,6 @@ urlpatterns = patterns('micro_admin.views',
     url(r'^users/$', 'userslist', name='userslist'),
     url(r'^createuser/$', 'createuser', name='createuser'),
     url(r'^logout/$', 'user_logout', name='logout'),
+    url(r'^createbranch/$', 'create_branch', name='createbranch'),
+    url(r'^createclient/$','create_client', name='createclient'),
 )

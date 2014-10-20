@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^', include('micro_admin.urls', namespace='micro_admin')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^microfinanceadmin/', include('micro_admin.urls', namespace='micro_admin')),
+
 )

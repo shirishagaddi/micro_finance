@@ -1,0 +1,171 @@
+{% extends 'home.html' %}
+{% block stage %}
+<!--content-->
+<div class="container form-client">
+  <div class="col-lg-offset-1 col-lg-3 col-lg-offset-3 form-user">
+    <fieldset>
+      <legend>Client-Registration</legend>
+      <form class="form-horizontal" role="form" action="/microfinanceadmin/createclient/" method="post">
+        {% csrf_token %}
+        <div class="user-form">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">First Name <span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="first_name" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Last Name <span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style datepicker" name="last_name" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Gender</label>
+            <div class="col-sm-8">
+              <input type="radio" name="gender" value="male">Male 
+              <input type="radio" name="gender" value="female">Female
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Branch <span>*</span></label>
+            <div class="col-sm-8">
+              <select class="form-control query-style" name="branchid" required="True">
+                {% for entry in branch %}
+                <option>Select Branch</option>
+                <option value="{{ entry.id }}">{{ entry.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Client Roles<span>*</span></label>
+            <div class="col-sm-8">
+              <select class="form-control query-style" name="clent_role" required="True">
+                <option>Select Client Roles</option>
+                <option>FirstLeader</option>
+                <option>SecondLeader</option>
+                <option>GroupMember</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Joined Date<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="datepicker" name="joined_date" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Account Type<span>*</span></label>
+            <div class="col-sm-8">
+              <select class="form-control query-style" name="account_type" required="True">
+                <option>Select Account Type</option>
+                <option>SavingsAccount</option>
+                <option>LoanAccount</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Account Number<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="account_number" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Occupation<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style datepicker" name="occupation" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Annual Income<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style datepicker" name="annual_income" required="True">
+            </div>
+          </div>
+        </div>
+        <div class="user-form">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Date Of Birth<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="dateeepicker" name="date_of_birth" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Blood-Group</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style datepicker" name="blood_group">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Mobile</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="datepicker" name="mobile">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Country</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="country">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">State</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="state">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">District</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="district">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">City</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="city">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Area</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="area">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Pin-code</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="pincode">
+            </div>
+          </div>
+        </div>
+        <br clear="all" />
+        <div class="user-form-footer">
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <i class="fa fa-check submit-icon"></i>
+              <input type="submit" value="Submit"  class="submit-btn" >
+              <i class="fa fa-times submit-icon"></i>
+              <input type="reset" value="Cancel"  class="cancel-btn" >
+            </div>
+          </div>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</div>
+<!--content-->
+</div>
+<!--body ends above-->
+</div>
+<script src="/static/js/my-script.js"></script>
+</body>
+</html>
+{% endblock %}
