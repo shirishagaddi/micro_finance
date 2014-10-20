@@ -27,7 +27,7 @@ $(document).ready(function(e) {
          $(this).animate({left:'-10px'});
     });
 	$(function() {
-    $( "#datepicker" ).datepicker();
+    $("#datepicker").datepicker();
   });
   //branch 
 	 $(".query-style").focus(function(e) {
@@ -49,5 +49,13 @@ $(document).ready(function(e) {
         $(this).css("background-color","#f63600")
     });
   //branch
+  //client-creation
+  $(function() {
+    $("#datpicker").datepicker();
+  });
+   $(function() {
+    $("#dateeepicker").datepicker();
+  });
+  //client creation
 //main ends here
 });
