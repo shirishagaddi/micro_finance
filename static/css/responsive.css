@@ -14,7 +14,19 @@ width: 70%;
 /* margin-left: 350px; */
 /* margin-top: 50px; */
 margin: auto;
-margin-top: 50px;
+}
+.form-client>fieldset {
+width: 98%;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+padding: 0px 10px;
+}
+.login-page>fieldset {
+border: 1px dashed #019090;
+padding: 20px 30px;
+box-shadow: 4px 4px 2px #ddd;
+margin-top: 20px;
 }
 }
 	
@@ -24,14 +36,46 @@ margin-top: 50px;
 width: 80%;
 margin: auto;
 /* margin-left: 350px; */
-margin-top: 50px;
 }
-
+.form>fieldset {
+width: 500px;
+border:1px dashed #019090;
+	box-shadow:4px 4px 2px #ddd;
 }
-
+.form-client>fieldset {
+width: 720px;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+margin-bottom:20px;
+}
+.user-form{
+	width:45%;
+}
+.form-client>fieldset {
+/* width: 98%; */
+width: 90%;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+margin-bottom: 20px;
+}
+.login-page>fieldset {
+border: 1px dashed #019090;
+padding: 20px 30px;
+box-shadow: 4px 4px 2px #ddd;
+margin-top: 20px;
+}
+}
 @media (min-width: 481px) and (max-width: 767px){ 
 body{
 	background:#fff;	
+}
+.container{
+	width:100%
+}
+.form-control{
+	width:100%;
 }
 .login-page {
 width: 80%;
@@ -72,7 +116,53 @@ background:#019090;
 border-radius:3px;
 
 }
+.form>fieldset {
+width: 100%;
+margin: 0px auto;
+margin-top: 20px;
+padding: 0px 20px;
+border:1px dashed #019090
+box-shadow:4px 4px 2px #ddd;
+}
+.table-form>fieldset {
+width: 80%;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+padding: 10px 15px 25px 15px;
+/* margin-top: 170px; */
+margin-top: 30px;
+}
+/*client-creation*/
+.form-client>fieldset {
+width: 90%;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+margin-bottom:10px;
+}
+.user-form {
+float: left;
+width: 80%;
+padding: 10px;
+margin-right: 35px;
+margin-left: 20px;
+}
+.user-form-footer {
+float: left;
+width: 100%;
+margin: 0px auto;
+/* margin-top: 50px; */
+/* margin-left: 35px; */
+/* margin-left: 100px; */
+padding-left: 180px;
+/* margin-bottom: 20px; */
+margin: 20px;
+}
+
+}
+
+
 	/*.blog-form .table-bordered{
 			border:1px solid #ddd;
 	}*/
-}

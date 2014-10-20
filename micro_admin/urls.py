@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, include, url
 
-urlpatterns = patterns('micro_admin',
+urlpatterns = patterns('micro_admin.views',
 
-    url(r'^$', 'views.index', name='microadmin_index'),
-    url(r'^login/$', 'views.login', name='login'),
-    url(r'^sucesslogin/$', 'views.sucesslogin', name='sucesslogin'),
+    url(r'^$', 'index', name='microadmin_index'),
+    url(r'^login/$', 'user_login', name='login'),
+    url(r'^users/$', 'userslist', name='userslist'),
+    url(r'^createuser/$', 'createuser', name='createuser'),
+    url(r'^logout/$', 'user_logout', name='logout'),
 )

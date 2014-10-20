@@ -26,6 +26,38 @@ $(document).ready(function(e) {
 	$(".slide-bar").mouseleave(function(e) {
          $(this).animate({left:'-10px'});
     });
-	
-	//main ends here
+	$(function() {
+    $("#datepicker").datepicker();
+  });
+  //branch 
+	 $(".query-style").focus(function(e) {
+        $(this).css("background-color","#ddd")
+    });
+	$(".query-style").blur(function(e) {
+        $(this).css("background-color","#fff")
+    });
+	$(".submit-btn").mouseenter(function(e) {
+        $(this).css("background-color","#172257")
+    });
+	$(".submit-btn").mouseleave(function(e) {
+        $(this).css("background-color","#394ba0")
+    });
+	$(".cancel-btn").mouseenter(function(e) {
+        $(this).css("background-color","#fe1800")
+    });
+	$(".cancel-btn").mouseleave(function(e) {
+        $(this).css("background-color","#f63600")
+    });
+  //branch
+  //client-creation
+  $(function() {
+    $("#datpicker").datepicker();
+  });
+  //client creation
+  //user reg
+   $(function() {
+    $("#dateepicker").datepicker();
+  })
+  //user-reg
+//main ends here
 });

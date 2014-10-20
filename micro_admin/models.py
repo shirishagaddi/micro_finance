@@ -39,12 +39,13 @@ class Branch(models.Model):
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, username, password=None):
+    def create_user(self, username, branch, password=None):
 
         if not username:
             raise ValueError('Users must have an username')
         user = self.model(username=username)
         user.set_password(password)
+        user.branch = branch
         user.save(using=self._db)
         return user
 
@@ -60,21 +61,21 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField( max_length=255, unique=True)
-    first_name = models.CharField(max_length=100, default='')
-    last_name = models.CharField(max_length=100, default='')
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100, default='', null=True)
     gender = models.CharField(choices = GENDER_TYPES ,max_length = 10)
     branch = models.ForeignKey(Branch)
     user_roles = models.CharField(choices= USER_ROLES, max_length=20)
-    date_of_birth = models.DateField(default='2000-06-04')
+    date_of_birth = models.DateField(default='2000-06-04', null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    country = models.CharField(max_length=50)
-    state = models.CharField(max_length=50)
-    district = models.CharField(max_length=50)
-    city = models.CharField(max_length=50)
-    area = models.CharField(max_length=150)
-    mobile = models.BigIntegerField(default='0')
-    pincode = models.BigIntegerField(default='0')
+    country = models.CharField(max_length=50, null=True)
+    state = models.CharField(max_length=50, null=True)
+    district = models.CharField(max_length=50, null=True)
+    city = models.CharField(max_length=50, null=True)
+    area = models.CharField(max_length=150, null=True)
+    mobile = models.BigIntegerField(default='0', null=True)
+    pincode = models.BigIntegerField(default='0', null=True)
 
     objects = UserManager()
 
