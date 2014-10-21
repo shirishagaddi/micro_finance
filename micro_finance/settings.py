@@ -40,7 +40,7 @@ ROOT_URLCONF = 'micro_finance.urls'
 
 WSGI_APPLICATION = 'micro_finance.wsgi.application'
 
-
+AUTH_USER_MODEL = 'micro_admin.User'
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -71,6 +71,14 @@ STATICFILES_DIRS = (BASE_DIR + '/static',)
 TEMPLATE_DIRS = (BASE_DIR +'/templates',)
 
 MEDIA_ROOT = BASE_DIR
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+"django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.request",
+)
 
 TEMPLATE_LOADERS = (
     ("django.template.loaders.cached.Loader", (

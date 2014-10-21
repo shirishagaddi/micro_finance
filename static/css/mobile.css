@@ -57,4 +57,36 @@ box-shadow: 4px 4px 2px #ddd;
 padding: 10px 15px 25px 15px;
 margin-top: 30px;
 }
+.form-client>fieldset {
+width: 98%;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+padding: 0px 10px;
+}
+.user-form {
+float: left;
+width: 90%;
+margin-right: 9px;
+padding: 0px 20px;
+}
+.login-page>fieldset {
+border: 1px dashed #019090;
+padding: 20px 30px;
+box-shadow: 4px 4px 2px #ddd;
+margin-top: 20px;
+}
+.nav-2-sec>fieldset {
+width:95%;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+padding: 0px 10px;
+}
+.view-client>fieldset {
+width: 98%;
+}
+.head-view-client{
+	float:left;
+}
 }

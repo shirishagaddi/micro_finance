@@ -57,5 +57,15 @@ $(document).ready(function(e) {
     $("#dateeepicker").datepicker();
   });
   //client creation
+  //user reg
+   $(function() {
+    $("#dateepicker").datepicker();
+  })
+  //user-reg
+  //group-reg
+   $(function() {
+    $("#daateepicker").datepicker();
+  })
+  //group-reg
 //main ends here
 });
