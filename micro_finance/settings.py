@@ -72,6 +72,14 @@ TEMPLATE_DIRS = (BASE_DIR +'/templates',)
 
 MEDIA_ROOT = BASE_DIR
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+"django.contrib.auth.context_processors.auth",
+"django.core.context_processors.debug",
+"django.core.context_processors.i18n",
+"django.core.context_processors.media",
+"django.core.context_processors.request",
+)
+
 TEMPLATE_LOADERS = (
     ("django.template.loaders.cached.Loader", (
         "django.template.loaders.filesystem.Loader",

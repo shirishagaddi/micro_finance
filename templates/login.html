@@ -34,7 +34,7 @@
 <script type="text/javascript">
   $(".login-btn").click(function(e) {
     e.preventDefault();
-    $.post("/microfinanceadmin/login/", $("form#loginform").serialize(), function(data) {
+    $.post("/login/", $("form#loginform").serialize(), function(data) {
       if (data.error){
         $("p.error").remove();
         $("#error").prepend("<p class='error'>"+data.message+"</p>");

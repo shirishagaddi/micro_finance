@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+import datetime
 
 
 GENDER_TYPES = (
@@ -49,9 +50,9 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, username, password):
+    def create_superuser(self, username, branch, password):
 
-        user = self.create_user(username, password=password)
+        user = self.create_user(username, branch, password=password)
         user.is_admin = True
         user.is_active = True
         user.save(using=self._db)
@@ -66,7 +67,7 @@ class User(AbstractBaseUser):
     gender = models.CharField(choices = GENDER_TYPES ,max_length = 10)
     branch = models.ForeignKey(Branch)
     user_roles = models.CharField(choices= USER_ROLES, max_length=20)
-    date_of_birth = models.DateField(default='2000-06-04', null=True)
+    date_of_birth = models.DateField(default='2000-01-01', null=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     country = models.CharField(max_length=50, null=True)
@@ -74,8 +75,8 @@ class User(AbstractBaseUser):
     district = models.CharField(max_length=50, null=True)
     city = models.CharField(max_length=50, null=True)
     area = models.CharField(max_length=150, null=True)
-    mobile = models.IntegerField(default=False, null=True)
-    pincode = models.CharField(default='0', max_length=10, null=True)
+    mobile = models.CharField(max_length=10, default='00', null=True)
+    pincode = models.CharField(default='', max_length=10, null=True)
 
     objects = UserManager()
 

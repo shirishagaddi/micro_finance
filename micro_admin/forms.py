@@ -1,26 +1,13 @@
 from django import forms
+from django.forms import ModelForm
+from micro_admin.models import User
 
 
-class UserForm(forms.Form):
-    first_name = forms.CharField(max_length=100)
-    last_name = forms.CharField(max_length=100, required=False)
-    gender = forms.CharField(max_length=10)
-    branchid = forms.IntegerField()
-    user_roles = forms.CharField(max_length=20)
-    date_of_birth = forms.DateField()
-    email = forms.EmailField(max_length=255)
-    mobile = forms.IntegerField()
-    country = forms.CharField(max_length=50,required=False)
-    state = forms.CharField(max_length=50,required=False)
-    district = forms.CharField(max_length=50,required=False)
-    city = forms.CharField(max_length=50,required=False)
-    area = forms.CharField(max_length=150,required=False)
-    pincode = forms.CharField(max_length=10, required=False)
-    username = forms.CharField(max_length=50)
-    password = forms.CharField(max_length=100)
+class UserForm(forms.ModelForm):
 
-
-
+    class Meta:
+        model = User
+        fields = ['email', 'first_name', 'gender', 'branch', 'user_roles', 'username', 'password']
 
 class BranchForm(forms.Form):
     name = forms.CharField(max_length=100)

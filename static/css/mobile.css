@@ -76,5 +76,17 @@ padding: 20px 30px;
 box-shadow: 4px 4px 2px #ddd;
 margin-top: 20px;
 }
-
+.nav-2-sec>fieldset {
+width:95%;
+margin: 0px auto;
+border: 1px dashed #019090;
+box-shadow: 4px 4px 2px #ddd;
+padding: 0px 10px;
+}
+.view-client>fieldset {
+width: 98%;
+}
+.head-view-client{
+	float:left;
+}
 }

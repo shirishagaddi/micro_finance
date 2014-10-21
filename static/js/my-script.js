@@ -53,15 +53,19 @@ $(document).ready(function(e) {
   $(function() {
     $("#datpicker").datepicker();
   });
+   $(function() {
+    $("#dateeepicker").datepicker();
+  });
   //client creation
   //user reg
    $(function() {
     $("#dateepicker").datepicker();
   })
   //user-reg
+  //group-reg
    $(function() {
-    $("#dateeepicker").datepicker();
-  });
-  //client creation
+    $("#daateepicker").datepicker();
+  })
+  //group-reg
 //main ends here
 });
