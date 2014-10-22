@@ -104,8 +104,8 @@ class Clients(models.Model):
     area = models.CharField(max_length=150)
     mobile = models.CharField(max_length=20,default=True,null=True)
     pincode = models.CharField(max_length=20,default=True,null=True)
-    photo = models.ImageField(upload_to=settings.PHOTO_PATH,null=True)
-    signature = models.ImageField(upload_to =settings.SIGNATURE_PATH,null=True)
+    photo = models.ImageField(upload_to='/static/users',null=True)
+    signature = models.ImageField(upload_to ='/static/users',null=True)
     is_active = models.BooleanField(default=True)
     branch = models.ForeignKey(Branch)
 

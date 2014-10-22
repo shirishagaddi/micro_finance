@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.conf import settings
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from micro_admin.forms import BranchForm,ClientsForm
@@ -35,6 +36,7 @@ def create_branch(request):
         else:
             return HttpResponse("Invalid Data")
 
+
 @csrf_exempt
 def create_client(request):
     if request.method == 'GET':
@@ -69,6 +71,34 @@ def create_client(request):
             area = request.POST.get("area")
             pincode = request.POST.get("pincode")
             client = Clients.objects.create(first_name=first_name,last_name=last_name,gender=gender,date_of_birth=date_of_birth,clent_role=clent_role,mobile=mobile,joined_date=joined_date,account_number=account_number,branch=branch,account_type=account_type,email=email,country=country,state=state,district=district,city=city,area=area,pincode=pincode,occupation=occupation,annual_income=annual_income,blood_group=blood_group)
-            return HttpResponse("Client Successfully Registered")
+            return render_to_response("successfuly_clientcreated.html" ,{'client':client })
         else:
             return HttpResponse("Invalid Data")
+
+
+def client_list(request):
+    return render(request,'list_of_clients.html')
+
+def update_profile(request,client):
+    if request.method =='GET':
+        client = Clients.objects.get(id=client)
+        return render(request,'update_clientprofile.html',{'client':client})
+    else:
+        print 'hi'
+        client = Clients.objects.get(id=client)
+        photo=request.FILES.get("photo")
+        signature = request.FILES.get("signature")
+        client.photo = photo
+        client.signature = signature
+        client.save()
+        return render_to_response('uploaded_successfully.html')
+
+def deleteclient_profile(request,client):
+    client = Clients.objects.get(id=client)
+    client.delete()
+    return HttpResponse('Deleted Client Profile')
+
+
+
+            
+

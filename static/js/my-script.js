@@ -57,5 +57,10 @@ $(document).ready(function(e) {
     $("#dateeepicker").datepicker();
   });
   //client creation
+  //user reg
+   $(function() {
+    $("#dateepicker").datepicker();
+  })
+  //user-reg
 //main ends here
 });

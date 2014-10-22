@@ -10,10 +10,10 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
-PHOTO_PATH = os.path.join(BASE_DIR, 'images/users')
-SIGNATURE_PATH = os.path.join(BASE_DIR, 'images/signature')
+PHOTO_PATH = 'static/users/'
+SIGNATURE_PATH = 'static/signature/'
 # Application definition
 
 INSTALLED_APPS = (

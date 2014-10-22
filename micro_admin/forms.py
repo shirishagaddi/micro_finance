@@ -34,3 +34,5 @@ class ClientsForm(forms.Form):
     area = forms.CharField(max_length=150,required=False)
     mobile = forms.CharField(required=False)
     pincode = forms.CharField(required=False)
+
+

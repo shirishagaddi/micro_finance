@@ -32,7 +32,6 @@
             <div class="col-sm-8">
               <select class="form-control query-style" name="branchid" required="True">
                 {% for entry in branch %}
-                <option>Select Branch</option>
                 <option value="{{ entry.id }}">{{ entry.name }}</option>
                 {% endfor %}
               </select>
