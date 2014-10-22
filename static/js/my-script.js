@@ -62,5 +62,12 @@ $(document).ready(function(e) {
     $("#dateepicker").datepicker();
   })
   //user-reg
+
+  //group-reg
+   $(function() {
+    $("#daateepicker").datepicker();
+  })
+  //group-reg
+
 //main ends here
 });

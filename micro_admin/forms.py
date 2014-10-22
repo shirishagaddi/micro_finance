@@ -1,5 +1,14 @@
 from django import forms
-from micro_admin.models import Branch,Clients
+from django.forms import ModelForm
+from micro_admin.models import User
+
+
+class UserForm(forms.ModelForm):
+
+    class Meta:
+        model = User
+        fields = ['email', 'first_name', 'gender', 'branch', 'user_roles', 'username', 'password']
+
 
 class BranchForm(forms.Form):
     name = forms.CharField(max_length=100)
@@ -34,5 +43,4 @@ class ClientsForm(forms.Form):
     area = forms.CharField(max_length=150,required=False)
     mobile = forms.CharField(required=False)
     pincode = forms.CharField(required=False)
-
 

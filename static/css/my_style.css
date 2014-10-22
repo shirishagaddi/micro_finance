@@ -457,6 +457,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9de96', end
 .btn-grp{
 	width:auto;
 }
+
 .inner-div{
 	width:95%;
 	margin:0px auto;
@@ -515,4 +516,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 }
 .icon-squa{
 	margin-right:3px;
+
+/*group-creation*/
+}
+.my-table{
+	height: 50px;
+	overflow-y: scroll;
+
 }

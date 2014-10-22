@@ -1,0 +1,138 @@
+{% extends 'home.html' %}
+{% block stage %}
+<!--content-->
+<div class="container form-client">
+  <div class="col-lg-offset-1 col-lg-3 col-lg-offset-3 form-client">
+    <fieldset>
+      <legend>Create User</legend>
+      <form class="form-horizontal" role="form" action="/createuser/" method="post">
+        {% csrf_token %}
+        <div class="user-form">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">First Name <span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="first_name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Last Name </label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style datepicker" name="last_name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Gender<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="radio" name="gender" value="M">&nbsp Male &nbsp &nbsp 
+              <input type="radio" name="gender" value="F">&nbsp Female
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Branch <span>*</span></label>
+            <div class="col-sm-8">
+              <select class="form-control query-style" name="branch" required="True">
+              <option>Select Branch</option>
+              {% for branch in branch %}
+                <option value="{{ branch.id }}">{{ branch.name }}</option>
+              {% endfor%}
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">User Roles<span>*</span></label>
+            <div class="col-sm-8">
+              <select class="form-control query-style" name="user_roles" required="True">
+                <option>Select Role</option>
+                <option>BranchManager</option>
+                <option>LoanOfficer</option>
+                <option>Cashier</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Date Of Birth</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="dateepicker" name="date_of_birth">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Email<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="email" required="True">
+            </div>
+          </div>
+        </div>
+        <div class="user-form">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Mobile</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="mobile">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Country</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="country">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">State</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="state">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">District</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="district">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">City</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="city">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Area</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="area">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Pin-code</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="pincode">
+            </div>
+          </div>
+        </div>
+        <br clear="all" />
+        <div class="user-form-footer1">
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">User Name<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control query-style" id="inputEmail3" name="username" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-4 control-label">Password<span>*</span></label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control query-style" id="inputEmail3" name="password" required="True">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-4 col-sm-8">
+              <i class="fa fa-check submit-icon"></i>
+              <input type="submit" value="Submit"  class="submit-btn" >
+              <i class="fa fa-times submit-icon"></i>
+              <input type="reset" value="Cancel"  class="cancel-btn" >
+            </div>
+          </div>
+        </div>
+      </form>
+    </fieldset>
+  </div>
+</div>
+<!--content-->
+<script src="/static/js/my-script.js"></script>
+{% endblock %}
