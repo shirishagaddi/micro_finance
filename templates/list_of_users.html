@@ -1,0 +1,48 @@
+{% extends 'home.html' %}
+{% block stage %}
+<!--content-->
+<div class="container search-box">
+  <form class="navbar-form navbar-left btns-div" role="search" action="/searchuser/" method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control mar-pad" placeholder="Search by Branch Name" name="searchelement">
+    </div>
+    <input type="submit" value="Submit" class="btn btn-default search-btn s-b-pad">
+    <a href="{% url 'micro_admin:createuser' %}" class="btn btn-default crete-btn"><i class="fa fa-plus plus-icon"></i>Create User</a>
+  </form>
+</div>
+<div class="container">
+  <div class="table-responsive height-table">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Branch</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for user in users_list %}
+        <tr>
+          <td>{{user.first_name}}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.user_roles }}</td>
+          <td>{{ user.branch.name }}</td>
+          <td>
+          {% if user.is_active %}
+            <span><i class="fa fa-square icon-squa green"></i></span>Active
+          {% else%}
+            <span><i class="fa fa-square icon-squa red"></i></span>Closed
+          {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--content-->
+<script src="/static/js/my-script.js"></script>
+{% endblock %}

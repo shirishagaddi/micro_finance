@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from micro_admin.models import User
+from micro_admin.models import User, Groups, Centers
 
 
 class UserForm(forms.ModelForm):
@@ -8,6 +8,7 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'first_name', 'gender', 'branch', 'user_roles', 'username', 'password']
+
 
 class BranchForm(forms.Form):
     name = forms.CharField(max_length=100)
@@ -43,3 +44,16 @@ class ClientsForm(forms.Form):
     mobile = forms.CharField(required=False)
     pincode = forms.CharField(required=False)
 
+
+class GroupsForm(forms.ModelForm):
+
+    class Meta:
+        model = Groups
+        fileds = ['name', 'account_type', 'account_number', 'activation_date', 'branch', 'clients']
+
+
+class CentersForm(forms.ModelForm):
+
+    class Meta:
+        model = Centers
+        fields = ['name', 'created_date', 'branch', 'groups']

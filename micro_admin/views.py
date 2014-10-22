@@ -3,13 +3,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 import json
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
-from micro_admin.models import User, Branch, Clients, Groups
-from micro_admin.forms import UserForm, BranchForm, ClientsForm
+from micro_admin.models import User, Branch, Clients, Groups, Centers
+from micro_admin.forms import UserForm, BranchForm, ClientsForm, GroupsForm, CentersForm
 import datetime
 
 
 def index(request):
     return render_to_response('base.html')
+
 
 @csrf_exempt
 def user_login(request):
@@ -34,14 +35,28 @@ def user_login(request):
             data = {'error':True, 'message':"Username and Password were incorrect."}
         return HttpResponse(json.dumps(data))
 
+
 def user_logout(request):
     if not request.user.is_authenticated():
         return HttpResponse('')
     logout(request)
     return HttpResponseRedirect('/')
 
+
 def userslist(request):
-    return HttpResponse("Dispalys users list")
+    users_list = User.objects.all()
+    return render(request, 'list_of_users.html', {'users_list':users_list})
+
+
+def groupslist(request):
+    groups_list = Groups.objects.all()
+    return render(request, 'list_of_groups.html', {'groups_list':groups_list})
+
+
+def centerslist(request):
+    centers_list = Centers.objects.all()
+    return render(request, 'list_of_centers.html', {'centers_list':centers_list})
+
 
 @csrf_exempt
 def createuser(request):
@@ -80,6 +95,7 @@ def createuser(request):
             print user_form.errors
             return HttpResponse("Invalid Data")
 
+
 def create_branch(request):
     if request.method == 'GET':
         return render(request, 'branchcreate.html')
@@ -101,6 +117,7 @@ def create_branch(request):
             return render_to_response("successfuly_branchcreated.html", {'branch':branch})
         else:
             return HttpResponse("Invalid Data")
+
 
 @csrf_exempt
 def create_client(request):
@@ -140,6 +157,7 @@ def create_client(request):
         else:
             return HttpResponse("Invalid Data")
 
+
 @csrf_exempt
 def create_group(request):
     if request.method == "GET":
@@ -147,19 +165,79 @@ def create_group(request):
         clients = Clients.objects.all()
         return render(request, 'creategroup.html', {'branches':branches, 'clients':clients})
     else:
-        print "Post Method"
-        name = request.POST.get('name')
-        account_type = request.POST.get('account_type')
-        account_number = request.POST.get('account_number')
-        datestring_format = datetime.datetime.strptime(request.POST.get("activation_date"),'%m/%d/%Y').strftime('%Y-%m-%d')
-        dateconvert = datetime.datetime.strptime(datestring_format, "%Y-%m-%d")
-        activation_date = dateconvert
-        branch=Branch.objects.get(id=request.POST.get('branch'))
-        clients = request.POST.getlist('clients')
-        print clients
-        group = Groups.objects.create(name=name, account_type=account_type, account_number=account_number, activation_date=activation_date, branch=branch)
-        for client in clients:
-            client = Clients.objects.get(id=client)
-            group.clients.add(client)
-            group.save()
-        return HttpResponse("Group created sucessfully and added clients")
+        groups_form = GroupsForm(request.POST)
+        if groups_form.is_valid():
+            name = request.POST.get('name')
+            account_type = request.POST.get('account_type')
+            account_number = request.POST.get('account_number')
+            datestring_format = datetime.datetime.strptime(request.POST.get("activation_date"),'%m/%d/%Y').strftime('%Y-%m-%d')
+            dateconvert = datetime.datetime.strptime(datestring_format, "%Y-%m-%d")
+            activation_date = dateconvert
+            branch = Branch.objects.get(id=request.POST.get('branch'))
+            clients = request.POST.getlist('clients')
+            group = Groups.objects.create(name=name, account_type=account_type, account_number=account_number, activation_date=activation_date, branch=branch)
+            for client in clients:
+                client = Clients.objects.get(id=client)
+                group.clients.add(client)
+                group.save()
+            return HttpResponse("Group created sucessfully and added clients")
+        else:
+            return HttpResponse("Invalid data")
+
+
+@csrf_exempt
+def create_center(request):
+    if request.method == "GET":
+        branches = Branch.objects.all()
+        groups = Groups.objects.all()
+        return render(request, 'createcenter.html', {'branches':branches, 'groups':groups})
+    else:
+        center_form = CentersForm(request.POST)
+        if center_form.is_valid():
+            name = request.POST.get('name')
+            datestring_format = datetime.datetime.strptime(request.POST.get("created_date"),'%m/%d/%Y').strftime('%Y-%m-%d')
+            dateconvert = datetime.datetime.strptime(datestring_format, "%Y-%m-%d")
+            created_date = dateconvert
+            branch = Branch.objects.get(id=request.POST.get('branch'))
+            groups = request.POST.getlist('groups')
+            center = Centers.objects.create(name=name, created_date=created_date, branch=branch)
+            for group in groups:
+                group = Groups.objects.get(id=group)
+                center.groups.add(group)
+                center.save()
+            return HttpResponse("Center created sucessfully")
+        else:
+            return HttpResponse("Invalid data")
+
+
+@csrf_exempt
+def searchcenter(request):
+    if request.method == "POST":
+        if request.POST.get('searchelement'):
+            branch = Branch.objects.get(name=request.POST.get('searchelement'))
+            centers_list = Centers.objects.filter(branch=branch.id)
+            return render(request, 'list_of_centers.html', {'centers_list':centers_list})
+        else:
+            return HttpResponse("Please type the name of the branch to search")
+
+
+@csrf_exempt
+def searchgroup(request):
+    if request.method == "POST":
+        if request.POST.get('searchelement'):
+            branch = Branch.objects.get(name=request.POST.get('searchelement'))
+            groups_list = Groups.objects.filter(branch=branch.id)
+            return render(request, 'list_of_groups.html', {'groups_list':groups_list})
+        else:
+            return HttpResponse("Please type the name of the branch to search")
+
+
+@csrf_exempt
+def searchuser(request):
+    if request.method == "POST":
+        if request.POST.get('searchelement'):
+            branch = Branch.objects.get(name=request.POST.get('searchelement'))
+            users_list = User.objects.filter(branch=branch.id)
+            return render(request, 'list_of_users.html', {'users_list':users_list})
+        else:
+            return HttpResponse("Please type the name of the branch to search")

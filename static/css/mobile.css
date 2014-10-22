@@ -89,4 +89,16 @@ width: 98%;
 .head-view-client{
 	float:left;
 }
+.user-form-footer {
+float: left;
+width: 90%;
+margin: 0px auto;
+margin-top: 50px;
+margin-left: 35px;
+}
+.user-form-footer1 {
+width: 98%;
+margin: 0px auto;
+padding-top: 15px;
+}
 }

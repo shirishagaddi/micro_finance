@@ -1,0 +1,49 @@
+{% extends 'home.html' %}
+{% load customtemplatetags %}
+{% block stage %}
+<!--content-->
+<div class="container search-box">
+  <form class="navbar-form navbar-left btns-div" role="search" action="/searchgroup/" method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control mar-pad" placeholder="Search by Branch Name" name="searchelement">
+    </div>
+    <input type="submit" value="Submit" class="btn btn-default search-btn s-b-pad">
+    <a href="{% url 'micro_admin:creategroup' %}" class="btn btn-default crete-btn"><i class="fa fa-plus plus-icon"></i>Create Group</a>
+  </form>
+</div>
+<div class="container">
+  <div class="table-responsive height-table">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Account-Type</th>
+          <th>Branch</th>
+          <th>Clients Count</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for group in groups_list %}
+        <tr>
+          <td>{{ group.name }}</td>
+          <td>{{ group.account_type }}</td>
+          <td>{{ group.branch.name }}</td>
+          <td>{{ group.id|get_count }}</td>
+          <td>
+          {% if group.is_active %}
+            <span><i class="fa fa-square icon-squa green"></i></span>Active
+          {% else %}
+            <span><i class="fa fa-square icon-squa red"></i></span>Closed
+          {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--content-->
+<script src="/static/js/my-script.js"></script>
+{% endblock %}
