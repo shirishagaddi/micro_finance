@@ -433,23 +433,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8c3310', end
 	border-radius:2px;
 	margin-left:20px;
 }
-
+.mar-pad{
+	margin-left:14px;
+}
 /*view client*/
 /*update-profile*/
 .browse-btn{
 	padding:2.5px 5px;
-	background: rgb(201,222,150); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(201,222,150,1) 0%, rgba(138,182,107,1) 44%, rgba(57,130,53,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(201,222,150,1)), color-stop(44%,rgba(138,182,107,1)), color-stop(100%,rgba(57,130,53,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9de96', endColorstr='#398235',GradientType=0 ); /* IE6-9 */
-
-	border:none;
-	color:#fff;
+	color:#000;
 	margin-left:-4px;
+	background:none;
+	border:1px solid #ddd;
 	
 }
 /*update profile*/
@@ -484,6 +478,7 @@ float: right;
 margin-top: 0px;
 border-radius: 0px;
 padding: 5px 8px;
+margin-right:-26px;
 background: rgb(255,255,136); /* Old browsers */
 background: -moz-linear-gradient(top,  rgba(255,255,136,1) 0%, rgba(255,255,136,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,136,1)), color-stop(100%,rgba(255,255,136,1))); /* Chrome,Safari4+ */
@@ -520,3 +515,173 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffff88', end
 	max-height:200px;
 	overflow-y:scroll;
 }
+/*view group*/
+.top-row-group, .btn-row{
+	margin:0px auto;
+	margin-top:20px;
+	text-align:center;
+}
+.padd{
+	padding-right:3px;
+}
+.border-right{
+	border-right:1px solid #ddd;
+}
+.dis-text{
+	color:#333;
+}
+.btn-row{
+	margin-top:25px;
+}
+.btn-row-mar {
+padding-left: 50px;
+}
+.btn-row .btn-row-btn{
+	margin-right:10px;
+	padding:5px 10px;
+	color:#fff;
+	box-shadow:1px 1px #ddd;
+	background:#607aab;
+	border:none;
+	margin-bottom:5px;
+}
+.top-row{
+	margin-top:10px;
+	margin-left:0px;
+}
+.table-row .tab1{
+	width:40%;
+	margin-right:5px;
+	float:left;
+}
+.align-txt{
+	text-align:center;
+	margin-bottom:5px;
+}
+.table-row .tab2{
+	width:30%;
+	margin-right:5px;
+	margin-left:5px;
+	margin-top:15px;
+	padding:10px 0px;
+	float:left;
+	border:1px solid #ddd;
+	background:#e7edf7;
+	text-align:center;
+}
+.table-row .tab3{
+	width:25%;
+	margin-right:5px;
+	margin-top:15px;
+	padding:10px 0px;
+	background:#f7cbaf;
+	border:1px solid #ddd;
+	box-shadow:2px 2px 2px #ddd;
+	float:left;
+}
+.tab1>fieldset{
+	margin:0px auto;
+	border:1px dashed #019090;
+	box-shadow:4px 4px 2px #ddd;
+	padding: 0px 10px;
+}
+.tab1>fieldset>legend{
+	width:auto;
+	font-size:15px;
+	color:#fff;
+	background:#ea3e3e;
+	padding:2px 6px;
+	border-radius:2px;
+	margin-left:20px;
+}
+.add-action-btn{
+	border:none;
+	background:#e44724;
+	color:#fff;
+	border-radius:1px;
+}
+.tab-height{
+	max-height:150px;
+	overflow-y:scroll;
+}
+.font{
+	font-weight:400;
+}
+.font a{
+	color:#000;
+	text-decoration:none;
+}
+.font a:hover{
+	color:#C00;
+}
+.align{
+	text-align:right;
+}
+.head-lab{
+	text-align:center;
+}
+.row3{
+	margin-top:20px;
+}
+.close-loan-btn{
+	background:#607aab;
+	color:#fff;
+	float:right;
+	padding:5px 10px;
+	border:none;
+}
+.btn-align{
+	float:inherit;	
+}
+.panel-tab table tr td, .panel-tab table tr th{
+	text-align:center;
+}
+.mar-top-lable{
+	margin-top:5px;
+}
+.mar-btm{
+	
+	margin-bottom:5px;
+}
+.dolla-anchor a{
+	text-decoration:none;
+	color:#fff;
+}
+.dolla-anchor a:hover{
+	text-decoration:none;
+	color:#fff;
+}
+.height-table table tr td a{
+text-decoration: none;
+color: #000;
+}
+.height-table table tr td a:hover{
+text-decoration: none;
+color: #000;
+}
+.tab-height table tr th{
+	text-align:center;
+}
+
+/*view group*/
+/*view user*/
+.view-user-tab{
+	width:50%;
+	margin:0px auto;
+	margin-top:20px;
+	box-shadow:1px 1px 2px #ddd;
+}
+.view-user-tab table caption{
+	font-size:14px;
+	font-weight:700;
+	text-align:left;
+	padding-left:10px;
+}
+.view-user-tab table tr{
+	text-align:center;
+}
+.view-user-tab table tr th{
+	text-align:center;
+	font-weight:700;
+}
+/*view user*/

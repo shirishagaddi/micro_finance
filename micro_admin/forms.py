@@ -49,7 +49,7 @@ class GroupsForm(forms.ModelForm):
 
     class Meta:
         model = Groups
-        fileds = ['name', 'account_type', 'account_number', 'activation_date', 'branch', 'clients']
+        fields = ['name', 'account_type', 'account_number', 'activation_date', 'branch', 'clients']
 
 
 class CentersForm(forms.ModelForm):

@@ -27,10 +27,10 @@
       <tbody>
       {% for centerobject in centers_list %}
         <tr>
-          <td>{{ centerobject.name }}</td>
-          <td>{{ centerobject.branch.name }}</td>
-          <td>{{ centerobject.created_date}}</td>
-          <td>{{ centerobject.id|get_centers_count }}</td>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.name }}</a></td>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.branch.name }}</a></td>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.created_date}}</a></td>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.id|get_centers_count }}</a></td>
           <td>
           {% if centerobject.is_active %}
             <span><i class="fa fa-square icon-squa green"></i></span>Active

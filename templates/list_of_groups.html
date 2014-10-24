@@ -27,10 +27,10 @@
       <tbody>
       {% for group in groups_list %}
         <tr>
-          <td>{{ group.name }}</td>
-          <td>{{ group.account_type }}</td>
-          <td>{{ group.branch.name }}</td>
-          <td>{{ group.id|get_count }}</td>
+          <td><a href="{% url 'micro_admin:groupprofile' group.id %}">{{ group.name }}</a></td>
+          <td><a href="{% url 'micro_admin:groupprofile' group.id %}">{{ group.account_type }}</a></td>
+          <td><a href="{% url 'micro_admin:groupprofile' group.id %}">{{ group.branch.name }}</a></td>
+          <td><a href="{% url 'micro_admin:groupprofile' group.id %}">{{ group.id|get_count }}</a></td>
           <td>
           {% if group.is_active %}
             <span><i class="fa fa-square icon-squa green"></i></span>Active

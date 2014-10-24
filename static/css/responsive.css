@@ -1,18 +1,12 @@
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-
 }
-
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px)  {
-
-
- }
+}
 @media (min-width: 992px)  and (max-width :1199px) { 
 .login-page {
 width: 70%;
-/* margin-left: 350px; */
-/* margin-top: 50px; */
 margin: auto;
 }
 .form-client>fieldset {
@@ -35,19 +29,20 @@ border: 1px dashed #019090;
 box-shadow: 4px 4px 2px #ddd;
 padding: 0px 10px;
 }
+c-b-padd{
+margin-right:20px;
 }
-	
+}
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width :991px) { 
 .login-page {
 width: 80%;
 margin: auto;
-/* margin-left: 350px; */
 }
 .form>fieldset {
 width: 500px;
 border:1px dashed #019090;
-	box-shadow:4px 4px 2px #ddd;
+box-shadow:4px 4px 2px #ddd;
 }
 .form-client>fieldset {
 width: 720px;
@@ -57,10 +52,9 @@ box-shadow: 4px 4px 2px #ddd;
 margin-bottom:20px;
 }
 .user-form{
-	width:45%;
+width:45%;
 }
 .form-client>fieldset {
-/* width: 98%; */
 width: 90%;
 margin: 0px auto;
 border: 1px dashed #019090;
@@ -83,22 +77,33 @@ padding: 0px 10px;
 .view-client>fieldset {
 width: 750px;
 }
-
+.mar-pad {
+margin-left: 4px;
+}
+.table-row .tab1 {
+width: 50%;
+}
+.table-row .tab2 {
+width: 40%;
+}
+.table-row .tab3 {
+width: 50%;
+margin-left: 150px;
+}
 }
 @media (min-width: 481px) and (max-width: 767px){ 
 body{
-	background:#fff;	
+background:#fff;	
 }
 .container{
-	width:100%
+width:100%;
 }
 .form-control{
-	width:100%;
+width:100%;
 }
 .login-page {
 width: 80%;
 margin: auto;
-
 margin-top: 50px;
 }
 .navbar-default .navbar-collapse, .navbar-default .navbar-form {
@@ -112,7 +117,6 @@ color: #000;
 color: #fff;
 background:#019090;
 border-radius:3px;
-
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 background-color: #fff;
@@ -132,14 +136,13 @@ display:block;
 color: #fff;
 background:#019090;
 border-radius:3px;
-
 }
 .form>fieldset {
 width: 100%;
 margin: 0px auto;
 margin-top: 20px;
 padding: 0px 20px;
-border:1px dashed #019090
+border:1px dashed #019090;
 box-shadow:4px 4px 2px #ddd;
 }
 .table-form>fieldset {
@@ -148,7 +151,6 @@ margin: 0px auto;
 border: 1px dashed #019090;
 box-shadow: 4px 4px 2px #ddd;
 padding: 10px 15px 25px 15px;
-/* margin-top: 170px; */
 margin-top: 30px;
 }
 /*client-creation*/
@@ -170,11 +172,7 @@ margin-left: 20px;
 float: left;
 width: 100%;
 margin: 0px auto;
-/* margin-top: 50px; */
-/* margin-left: 35px; */
-/* margin-left: 100px; */
 padding-left: 180px;
-/* margin-bottom: 20px; */
 margin: 20px;
 }
 .nav-2-sec>fieldset {
@@ -188,7 +186,7 @@ padding: 0px 10px;
 width: 70%;
 }
 .head-view-client{
-	float:left;
+float:left;
 }
 .user-form-footer1 {
 float: left;
@@ -203,8 +201,39 @@ margin-top: 50px;
 margin-left: 35px;
 }
 .submit-btn{
-	margin-right:150px;
+margin-right:150px;
 }
+.s-b-padd{
+margin-left:14px;
+}
+.btn-row-mar {
+padding-left: 50px;
+}
+/*view group*/
+.top-row-group{
+margin: 0px auto;
+margin-top: 20px;
+text-align: center;
+}
+.table-row .tab1, .table-row .tab2, .panel-default {
+width: 95%;
+margin-right: 5px;
+float: left;
+margin-left: 10px;
+}
+.table-row .tab3 {
+width: 280px;
+margin-left: 150px;
+}
+.head-lab {
+text-align: center;
+padding-left: 85px;
+}
+/*view-group*/
+/*view user*/
+.view-user-tab{
+	width:70%;
 }
 
-	
+/*view user*/
+} 

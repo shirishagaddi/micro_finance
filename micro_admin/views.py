@@ -241,3 +241,28 @@ def searchuser(request):
             return render(request, 'list_of_users.html', {'users_list':users_list})
         else:
             return HttpResponse("Please type the name of the branch to search")
+
+
+def userprofile(request, user_id):
+    userobject = User.objects.get(id=user_id)
+    return render(request, 'user_profile.html', {'userobject':userobject})
+
+
+def groupprofile(request, group_id):
+    group = Groups.objects.get(id=group_id)
+    clients_list = group.clients.all()
+    active_clients_count = group.clients.filter(is_active=1).count()
+    centers_list = group.centers_set.all()
+    return render(request, 'group_profile.html', {'group':group, 'centers_list':centers_list,'clients_list':clients_list, 'active_clients_count':active_clients_count})
+
+
+def centerprofile(request, center_id):
+    center = Centers.objects.get(id=center_id)
+    groups_list = center.groups.all()
+    active_groups_count = center.groups.filter(is_active=1).count()
+    active_groups_list = center.groups.filter(is_active=1)
+    active_clients_count=0
+    for active_group in active_groups_list:
+        active_clients_count += active_group.clients.filter(is_active=1).count()
+    return render(request, 'center_profile.html', {'centerobject':center, 'groups_list':groups_list,'active_groups_count':active_groups_count,'active_clients_count':active_clients_count})
+

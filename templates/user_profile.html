@@ -1,0 +1,57 @@
+{% extends 'home.html' %}
+{% block stage %}
+<!--content-->
+<!--top row group starts below-->
+<div class="container">
+<!--forst row group ends above-->
+<!--button row-->
+<div class="container btn-row btn-row-mar">
+  <a href="#"><button type="button" class="btn-row-btn"><i class="fa fa-pencil-square-o home-color"></i>Edit</button></a>
+  <a href="#"><button type="button" class="btn-row-btn"><i class="fa fa-trash-o home-color"></i>Delete</button></a>
+  <a href="#"><button type="button" class="btn-row-btn"><i class="fa fa-cog home-color"></i>Change Password</button></a>
+</div>
+<!--button row ends above-->
+<!--last row-->
+<div class="table-responsive view-user-tab">
+  <table class="table table-bordered">
+    <caption>
+      {% if userobject.is_active %}
+        <i class="fa fa-square green padd"></i>
+      {% else %}
+        <i class="fa fa-square red padd"></i>
+      {% endif %}
+      <i class="fa fa-user padd"></i>
+      {{ userobject.first_name }}
+    </caption>
+    <tbody>
+      <tr>
+        <th>User Name</th>
+        <td>{{userobject.username}}</td>
+      </tr>
+      <tr>
+        <th>First Name</th>
+        <td>{{userobject.first_name}}</td>
+      </tr>
+      <tr>
+        <th>Last Name</th>
+        <td>{{userobject.last_name}}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{userobject.email}}</td>
+      </tr>
+      <tr>
+        <th>Branch</th>
+        <td>{{userobject.branch.name}}</td>
+      </tr>
+      <tr>
+        <th>Role</th>
+        <td>{{userobject.user_roles}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--last row ends above-->
+<!--content-->
+<script src="/static/js/my-script.js"></script>
+{% endblock %}
