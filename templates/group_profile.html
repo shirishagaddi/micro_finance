@@ -1,0 +1,156 @@
+{% extends 'home.html' %}
+{% block stage %}
+<!--content-->
+<!--top row group starts below-->
+<div class="container">
+  <div class="container top-row-group">
+    <div class="col-lg-3 col-xs-12 border-right">
+      <label for="inputEmail3" class="col-sm-12 control-label mar-btm">
+      {% if group.is_active %}
+        <i class="fa fa-square green padd"></i>
+      {% else %}
+        <i class="fa fa-square red padd"></i>
+      {% endif %}
+      <i class="fa fa-users padd"></i>
+      {{group.name}}
+      </label>
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 border-right dis-text">
+      <i class="fa fa-barcode padd"></i> Uniquely identified by Id "{{group.id}}"
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 border-right dis-text">
+      <i class="fa fa-building-o"></i> Branch : "{{group.branch.name}}"
+    </div>
+    <div class="col-md-3 col-sm-4 col-xs-12 dis-text">
+      <i class="fa fa-map-marker"></i> Center :
+      {% for centerobject in centers_list %}
+      "{{ centerobject.name }}"
+      {% endfor %}
+    </div>
+  </div>
+  <!--forst row group ends above-->
+  <!--button row-->
+  <div class="container btn-row btn-row-mar">
+    <button type="button" class="btn-row-btn"><i class="fa fa-pencil-square-o home-color"></i>Edit</button>
+    <button type="button" class="btn-row-btn"><i class="fa fa-file-text-o home-color"></i>Group Saving Application</button>
+    <button type="button" class="btn-row-btn"><i class="fa fa-file-text-o home-color"></i>Group Loan Application</button>
+    <button type="button" class="btn-row-btn"><i class="fa fa-file-text-o home-color"></i>Bulk JLG Loan Application</button>
+    <button type="button" class="btn-row-btn"><i class="fa fa-book home-color"></i>Attendance</button>
+    <button type="button" class="btn-row-btn"><i class="fa fa-user home-color"></i>Assign Staff</button>
+    <button type="button" class="btn-row-btn"><i class="fa fa-times home-color"></i>Close</button>
+  </div>
+  <!--button row ends above-->
+  <!--tabular row starts below-->
+  <div class="btn-row table-row">
+    <div class="tab1">
+      <fieldset>
+        <legend>Clients</legend>
+        <div class="align-txt">
+          <button type="button" class="btn-row-btn"><i class="fa fa-arrow-right home-color"></i>Transfer Clients</button>
+          <button type="button" class="btn-row-btn"><i class="fa fa-plus home-color"></i>Add</button><br /><br />
+          <!--table responsive-->
+          <div class="table-responsive tab-height">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Account#</th>
+                  <th>Name</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for client in clients_list %}
+                <tr>
+                  {% if client.is_active %}
+                  <td><a href="#"><i class="fa fa-square green padd"></i>{{client.id}}</a></td>
+                  {% else %}
+                  <td><a href="#"><i class="fa fa-square red padd"></i>{{client.id}}</a></td>
+                  {% endif %}
+                  <td><a href="#">{{client.first_name}}</a></td>
+                  <td><button type="button" class="add-action-btn"><i class="fa fa-plus home-color"></i>JLG Loan Application</button></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!--table responsive-->
+        </div>
+      </fieldset>
+    </div>
+    <div class="tab2">
+      <label for="inputEmail3" class="col-sm-12 control-label">
+      Next meeting on : <span class="font">25-10-2014 <a href="#"><i class="fa fa-pencil-square-o padd"></i></a></span>
+      </label>
+      <label for="inputEmail3" class="col-sm-12 control-label">
+      Meeting Frequency : <span class="font">Weekly on monday</span>
+      </label>
+    </div>
+    <div class="tab3">
+      <label for="inputEmail3" class="col-sm-12 control-label head-lab">
+      {{group.name}} Details
+      </label>
+      <label for="inputEmail3" class="col-sm-12 control-label">
+      Activation Date : <span class="font align">{{group.activation_date}}</span>
+      </label>
+      <label for="inputEmail3" class="col-sm-12 control-label">
+      External id : <span class="font align">Number</span>
+      </label>
+      <label for="inputEmail3" class="col-sm-12 control-label head-lab">
+      Summary
+      </label>
+      <label for="inputEmail3" class="col-sm-12 control-label">
+      Active Clients : <span class="font align">{{ active_clients_count }}</span>
+      </label>
+      <label for="inputEmail3" class="col-sm-12 control-label">
+      Active Group Loans : <span class="font align">Count</span>
+      </label>
+      <label for="inputEmail3" class="col-sm-12 control-label">
+      Active Client Loans : <span class="font align">Count</span>
+      </label>
+    </div>
+  </div>
+</div>
+<!--tabular row ends above-->
+<!--last row-->
+<div class="container row3">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <label for="inputEmail3" class="col-sm-4 control-label mar-top-lable">
+      Loan Account Overview
+      </label>
+      <button type="button" class="close-loan-btn"><i class="fa fa-eye home-color"></i>View Closed Loans</button><br clear="all" />
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive tab-height panel-tab">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Account#</th>
+              <th>Products</th>
+              <th>Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><i class="fa fa-square green padd"></i>56522515451</td>
+              <td>Table cell</td>
+              <td><i class="fa fa-users"></i></td>
+              <td><a href="#" class="" title="Make Payment"><button type="button" class="close-loan-btn btn-align dolla-anchor"><i class="fa fa-usd"></i></button></a></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-square green padd"></i>56522515451</td>
+              <td>Table cell</td>
+              <td><i class="fa fa-users"></i></td>
+              <td><a href="#" class="" title="Make Payment"><button type="button" class="close-loan-btn btn-align dolla-anchor"><i class="fa fa-usd"></i></button></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--last row ends above-->
+<!--content-->
+<script src="/static/js/my-script.js"></script>
+{% endblock %}

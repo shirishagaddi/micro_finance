@@ -205,7 +205,39 @@ margin-left: 35px;
 .submit-btn{
 	margin-right:150px;
 }
+.s-b-padd{
+margin-left:14px;
+}
+.btn-row-mar {
+padding-left: 50px;
+}
+/*view group*/
+.top-row-group{
+margin: 0px auto;
+margin-top: 20px;
+text-align: center;
+}
+.table-row .tab1, .table-row .tab2, .panel-default {
+width: 95%;
+margin-right: 5px;
+float: left;
+margin-left: 10px;
+}
+.table-row .tab3 {
+width: 280px;
+margin-left: 150px;
+}
+.head-lab {
+text-align: center;
+padding-left: 85px;
+}
+/*view-group*/
+/*view user*/
+.view-user-tab{
+	width:70%;
+}
+
+/*view user*/
 
 }
 
-	

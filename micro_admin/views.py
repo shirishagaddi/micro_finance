@@ -45,7 +45,18 @@ def user_logout(request):
 
 
 def userslist(request):
-    return HttpResponse("Dispalys users list")
+    users_list = User.objects.all()
+    return render(request, 'list_of_users.html', {'users_list':users_list})
+
+
+def groupslist(request):
+    groups_list = Groups.objects.all()
+    return render(request, 'list_of_groups.html', {'groups_list':groups_list})
+
+
+def centerslist(request):
+    centers_list = Centers.objects.all()
+    return render(request, 'list_of_centers.html', {'centers_list':centers_list})
 
 
 @csrf_exempt
@@ -192,20 +203,104 @@ def create_group(request):
         clients = Clients.objects.all()
         return render(request, 'creategroup.html', {'branches':branches, 'clients':clients})
     else:
-        print "Post Method"
-        name = request.POST.get('name')
-        account_type = request.POST.get('account_type')
-        account_number = request.POST.get('account_number')
-        datestring_format = datetime.datetime.strptime(request.POST.get("activation_date"),'%m/%d/%Y').strftime('%Y-%m-%d')
-        dateconvert = datetime.datetime.strptime(datestring_format, "%Y-%m-%d")
-        activation_date = dateconvert
-        branch=Branch.objects.get(id=request.POST.get('branch'))
-        clients = request.POST.getlist('clients')
-        print clients
-        group = Groups.objects.create(name=name, account_type=account_type, account_number=account_number, activation_date=activation_date, branch=branch)
-        for client in clients:
-            client = Clients.objects.get(id=client)
-            group.clients.add(client)
-            group.save()
-        return HttpResponse("Group created sucessfully and added clients")
+        groups_form = GroupsForm(request.POST)
+        if groups_form.is_valid():
+            name = request.POST.get('name')
+            account_type = request.POST.get('account_type')
+            account_number = request.POST.get('account_number')
+            datestring_format = datetime.datetime.strptime(request.POST.get("activation_date"),'%m/%d/%Y').strftime('%Y-%m-%d')
+            dateconvert = datetime.datetime.strptime(datestring_format, "%Y-%m-%d")
+            activation_date = dateconvert
+            branch = Branch.objects.get(id=request.POST.get('branch'))
+            clients = request.POST.getlist('clients')
+            group = Groups.objects.create(name=name, account_type=account_type, account_number=account_number, activation_date=activation_date, branch=branch)
+            for client in clients:
+                client = Clients.objects.get(id=client)
+                group.clients.add(client)
+                group.save()
+            return HttpResponse("Group created sucessfully and added clients")
+        else:
+            return HttpResponse("Invalid data")
+
+
+@csrf_exempt
+def create_center(request):
+    if request.method == "GET":
+        branches = Branch.objects.all()
+        groups = Groups.objects.all()
+        return render(request, 'createcenter.html', {'branches':branches, 'groups':groups})
+    else:
+        center_form = CentersForm(request.POST)
+        if center_form.is_valid():
+            name = request.POST.get('name')
+            datestring_format = datetime.datetime.strptime(request.POST.get("created_date"),'%m/%d/%Y').strftime('%Y-%m-%d')
+            dateconvert = datetime.datetime.strptime(datestring_format, "%Y-%m-%d")
+            created_date = dateconvert
+            branch = Branch.objects.get(id=request.POST.get('branch'))
+            groups = request.POST.getlist('groups')
+            center = Centers.objects.create(name=name, created_date=created_date, branch=branch)
+            for group in groups:
+                group = Groups.objects.get(id=group)
+                center.groups.add(group)
+                center.save()
+            return HttpResponse("Center created sucessfully")
+        else:
+            return HttpResponse("Invalid data")
+
+
+@csrf_exempt
+def searchcenter(request):
+    if request.method == "POST":
+        if request.POST.get('searchelement'):
+            branch = Branch.objects.get(name=request.POST.get('searchelement'))
+            centers_list = Centers.objects.filter(branch=branch.id)
+            return render(request, 'list_of_centers.html', {'centers_list':centers_list})
+        else:
+            return HttpResponse("Please type the name of the branch to search")
+
+
+@csrf_exempt
+def searchgroup(request):
+    if request.method == "POST":
+        if request.POST.get('searchelement'):
+            branch = Branch.objects.get(name=request.POST.get('searchelement'))
+            groups_list = Groups.objects.filter(branch=branch.id)
+            return render(request, 'list_of_groups.html', {'groups_list':groups_list})
+        else:
+            return HttpResponse("Please type the name of the branch to search")
+
+
+@csrf_exempt
+def searchuser(request):
+    if request.method == "POST":
+        if request.POST.get('searchelement'):
+            branch = Branch.objects.get(name=request.POST.get('searchelement'))
+            users_list = User.objects.filter(branch=branch.id)
+            return render(request, 'list_of_users.html', {'users_list':users_list})
+        else:
+            return HttpResponse("Please type the name of the branch to search")
+
+
+def userprofile(request, user_id):
+    userobject = User.objects.get(id=user_id)
+    return render(request, 'user_profile.html', {'userobject':userobject})
+
+
+def groupprofile(request, group_id):
+    group = Groups.objects.get(id=group_id)
+    clients_list = group.clients.all()
+    active_clients_count = group.clients.filter(is_active=1).count()
+    centers_list = group.centers_set.all()
+    return render(request, 'group_profile.html', {'group':group, 'centers_list':centers_list,'clients_list':clients_list, 'active_clients_count':active_clients_count})
+
+
+def centerprofile(request, center_id):
+    center = Centers.objects.get(id=center_id)
+    groups_list = center.groups.all()
+    active_groups_count = center.groups.filter(is_active=1).count()
+    active_groups_list = center.groups.filter(is_active=1)
+    active_clients_count=0
+    for active_group in active_groups_list:
+        active_clients_count += active_group.clients.filter(is_active=1).count()
+    return render(request, 'center_profile.html', {'centerobject':center, 'groups_list':groups_list,'active_groups_count':active_groups_count,'active_clients_count':active_clients_count})
 
