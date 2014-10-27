@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
@@ -10,6 +11,7 @@ import datetime
 
 def index(request):
     return render_to_response('base.html')
+
 
 @csrf_exempt
 def user_login(request):
@@ -34,14 +36,17 @@ def user_login(request):
             data = {'error':True, 'message':"Username and Password were incorrect."}
         return HttpResponse(json.dumps(data))
 
+
 def user_logout(request):
     if not request.user.is_authenticated():
         return HttpResponse('')
     logout(request)
     return HttpResponseRedirect('/')
 
+
 def userslist(request):
     return HttpResponse("Dispalys users list")
+
 
 @csrf_exempt
 def createuser(request):
@@ -52,6 +57,7 @@ def createuser(request):
         print request.POST
         user_form = UserForm(request.POST)
         if user_form.is_valid():
+            print user_form.errors
             user_name = request.POST.get('username')
             user_password = request.POST.get('password')
             user = User.objects.create_user(username=user_name, password=user_password, branch=Branch.objects.get(id=request.POST.get('branch')))
@@ -80,6 +86,7 @@ def createuser(request):
             print user_form.errors
             return HttpResponse("Invalid Data")
 
+
 def create_branch(request):
     if request.method == 'GET':
         return render(request, 'branchcreate.html')
@@ -101,6 +108,12 @@ def create_branch(request):
             return render_to_response("successfuly_branchcreated.html", {'branch':branch})
         else:
             return HttpResponse("Invalid Data")
+
+
+def branch_list(request):
+    branches_list = Branch.objects.all()
+    return render(request,'list_of_branches.html',{'branches_list':branches_list })
+
 
 @csrf_exempt
 def create_client(request):
@@ -136,9 +149,41 @@ def create_client(request):
             area = request.POST.get("area")
             pincode = request.POST.get("pincode")
             client = Clients.objects.create(first_name=first_name,last_name=last_name,gender=gender,date_of_birth=date_of_birth,clent_role=clent_role,mobile=mobile,joined_date=joined_date,account_number=account_number,branch=branch,account_type=account_type,email=email,country=country,state=state,district=district,city=city,area=area,pincode=pincode,occupation=occupation,annual_income=annual_income,blood_group=blood_group)
-            return HttpResponse("Client Successfully Registered")
+            return render_to_response("client_profile.html" ,{'client':client })
         else:
             return HttpResponse("Invalid Data")
+
+
+def client_list(request):
+    clients_list = Clients.objects.all()
+    return render(request,'list_of_clients.html',{'clients_list':clients_list})
+
+
+def update_profile(request,client):
+    if request.method =='GET':
+        client = Clients.objects.get(id=client)
+        return render(request,'update_clientprofile.html',{'client':client})
+    else:
+        print 'hi'
+        client = Clients.objects.get(id=client)
+        photo=request.FILES.get("photo")
+        signature = request.FILES.get("signature")
+        client.photo = photo
+        client.signature = signature
+        client.save()
+        return render_to_response('client_profile.html',{'client':client })
+
+
+def clientprofile(request, client):
+    client = Clients.objects.get(id=client)
+    return render(request, 'client_profile.html', {'client':client})
+
+
+def deleteclient_profile(request,client):
+    client = Clients.objects.get(id=client)
+    client.delete()
+    return HttpResponse('Deleted Client Profile')
+
 
 @csrf_exempt
 def create_group(request):
@@ -163,3 +208,4 @@ def create_group(request):
             group.clients.add(client)
             group.save()
         return HttpResponse("Group created sucessfully and added clients")
+

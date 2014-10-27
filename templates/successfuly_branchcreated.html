@@ -2,27 +2,27 @@
 {% block stage %}
 <!--content-->
 <div class="container table-form">
-  <fieldset>
-    <legend>Data Table</legend>
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <th>Name</td>
-            <td>{{ branch.name }}</td>
-          </tr>
-          <tr>
-            <th>Created On</td>
-            <td>{{ branch.opening_date}}</td>
-          </tr>
-          <tr>
-            <th>City</td>
-            <td>{{ branch.city }}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </fieldset>
+    <fieldset>
+        <legend>{{ branch.name }}</legend>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Name</td>
+                        <td>{{ branch.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Created On</td>
+                        <td>{{ branch.opening_date}}</td>
+                    </tr>
+                    <tr>
+                        <th>City</td>
+                        <td>{{ branch.city }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
 </div>
 <!--content-->
 </div>

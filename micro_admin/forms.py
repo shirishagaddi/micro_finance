@@ -9,6 +9,7 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['email', 'first_name', 'gender', 'branch', 'user_roles', 'username', 'password']
 
+
 class BranchForm(forms.Form):
     name = forms.CharField(max_length=100)
     opening_date = forms.DateField()
