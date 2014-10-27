@@ -1,0 +1,49 @@
+{% extends 'home.html' %}
+{% load customtemplatetags %}
+{% block stage %}
+<!--content-->
+<div class="container search-box">
+  <form class="navbar-form navbar-left btns-div" role="search" action="/searchcenter/" method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <input type="text" class="form-control mar-pad" placeholder="Search by Branch Name" name="searchelement">
+    </div>
+    <input type="submit" value="Submit" class="btn btn-default search-btn s-b-pad">
+    <a href="{% url 'micro_admin:createcenter' %}" class="btn btn-default crete-btn"><i class="fa fa-plus plus-icon"></i>Create Center</a>
+  </form>
+</div>
+<div class="container">
+  <div class="table-responsive height-table">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Branch</th>
+          <th>Opened On</th>
+          <th>Groups Count</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for centerobject in centers_list %}
+        <tr>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.name }}</a></td>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.branch.name }}</a></td>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.created_date}}</a></td>
+          <td><a href="{% url 'micro_admin:centerprofile' centerobject.id %}">{{ centerobject.id|get_centers_count }}</a></td>
+          <td>
+          {% if centerobject.is_active %}
+            <span><i class="fa fa-square icon-squa green"></i></span>Active
+          {% else %}
+            <span><i class="fa fa-square icon-squa red"></i></span>Closed
+          {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<!--content-->
+<script src="/static/js/my-script.js"></script>
+{% endblock %}

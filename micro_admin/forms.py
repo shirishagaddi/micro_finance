@@ -44,3 +44,16 @@ class ClientsForm(forms.Form):
     mobile = forms.CharField(required=False)
     pincode = forms.CharField(required=False)
 
+
+class GroupsForm(forms.ModelForm):
+
+    class Meta:
+        model = Groups
+        fields = ['name', 'account_type', 'account_number', 'activation_date', 'branch', 'clients']
+
+
+class CentersForm(forms.ModelForm):
+
+    class Meta:
+        model = Centers
+        fields = ['name', 'created_date', 'branch', 'groups']
