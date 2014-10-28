@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from micro_admin.models import User
+from micro_admin.models import User, Groups, Centers
 
 
 class UserForm(forms.ModelForm):

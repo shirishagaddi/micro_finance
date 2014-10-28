@@ -25,7 +25,7 @@
       <tbody>
       {% for client in clients_list %}
         <tr>
-          <td>{{client.first_name}}</td>
+          <td><a href="{% url 'micro_admin:clientprofile' client.id %}">{{client.first_name}}</a></td>
           <td>{{client.account_number}}</td>
           <td>{{client.joined_date}}</td>
           <td>{{client.branch.name}}</td>

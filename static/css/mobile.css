@@ -101,5 +101,50 @@ width: 98%;
 margin: 0px auto;
 padding-top: 15px;
 }
-
+.s-b-padd{
+	margin-left:14px;
+}
+c-b-padd{
+		margin-left:20px;
+}
+.btn-row-mar {
+padding-left: 50px;
+}
+/*view-client*/
+.dis-text {
+color: #333;
+text-align: center;
+}
+.border-right {
+border-right:none;
+}
+.table-row .tab1, .table-row .tab2 {
+width: 98%;
+}
+.table-row .tab3 {
+width: 60%;
+margin-left: 70px;
+margin-right: 5px;
+margin-top: 15px;
+padding: 10px 0px;
+background: #f7cbaf;
+border: 1px solid #ddd;
+box-shadow: none;
+float: left;
+}
+.head-lab {
+text-align: center;
+padding-left: 80px;
+}
+.panel-default {
+border-color: #ddd;
+width: 98%;
+margin-left: 3px;
+}
+/*view client*/
+/*view-user*/
+.view-user-tab{
+	width:98%;
+}
+/*view user*/
 }

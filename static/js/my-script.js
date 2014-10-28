@@ -56,18 +56,23 @@ $(document).ready(function(e) {
    $(function() {
     $("#dateeepicker").datepicker();
   });
+   $(function() {
+    $("#datepicker1").datepicker(
+      {
+      changeMonth: true,
+      changeYear: true
+    });
+  });
   //client creation
   //user reg
    $(function() {
     $("#dateepicker").datepicker();
-  })
+  });
   //user-reg
-
   //group-reg
    $(function() {
     $("#daateepicker").datepicker();
-  })
+  });
   //group-reg
-
 //main ends here
 });

@@ -62,11 +62,11 @@
                 {% for client in clients_list %}
                 <tr>
                   {% if client.is_active %}
-                  <td><a href="#"><i class="fa fa-square green padd"></i>{{client.id}}</a></td>
+                  <td><i class="fa fa-square green padd"></i>{{client.id}}</td>
                   {% else %}
-                  <td><a href="#"><i class="fa fa-square red padd"></i>{{client.id}}</a></td>
+                  <td><i class="fa fa-square red padd"></i>{{client.id}}</td>
                   {% endif %}
-                  <td><a href="#">{{client.first_name}}</a></td>
+                  <td><a href="{% url 'micro_admin:clientprofile' client.id %}">{{client.first_name}}</a></td>
                   <td><button type="button" class="add-action-btn"><i class="fa fa-plus home-color"></i>JLG Loan Application</button></td>
                 </tr>
                 {% endfor %}
@@ -79,10 +79,10 @@
     </div>
     <div class="tab2">
       <label for="inputEmail3" class="col-sm-12 control-label">
-      Next meeting on : <span class="font">25-10-2014 <a href="#"><i class="fa fa-pencil-square-o padd"></i></a></span>
+      Next meeting on : <span class="font">Meeting date <a href="#"><i class="fa fa-pencil-square-o padd"></i></a></span>
       </label>
       <label for="inputEmail3" class="col-sm-12 control-label">
-      Meeting Frequency : <span class="font">Weekly on monday</span>
+      Meeting Frequency : <span class="font">Meeting Frequency</span>
       </label>
     </div>
     <div class="tab3">
@@ -133,14 +133,8 @@
           </thead>
           <tbody>
             <tr>
-              <td><i class="fa fa-square green padd"></i>56522515451</td>
-              <td>Table cell</td>
-              <td><i class="fa fa-users"></i></td>
-              <td><a href="#" class="" title="Make Payment"><button type="button" class="close-loan-btn btn-align dolla-anchor"><i class="fa fa-usd"></i></button></a></td>
-            </tr>
-            <tr>
-              <td><i class="fa fa-square green padd"></i>56522515451</td>
-              <td>Table cell</td>
+              <td><i class="fa fa-square green padd"></i>Account No</td>
+              <td>Product name</td>
               <td><i class="fa fa-users"></i></td>
               <td><a href="#" class="" title="Make Payment"><button type="button" class="close-loan-btn btn-align dolla-anchor"><i class="fa fa-usd"></i></button></a></td>
             </tr>

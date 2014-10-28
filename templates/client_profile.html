@@ -5,7 +5,7 @@
     <legend>{{ client.first_name}}</legend>
     <div class="head-view-client">
       <ul>
-        <li><a href="{% url 'micro_admin:createclient' %}"><i class="fa fa-pencil-square-o home-color"></i>Edit</a></li>
+        <li><a href="#"><i class="fa fa-pencil-square-o home-color"></i>Edit</a></li>
         <li><a href="#"><i class="fa fa-arrow-right home-color"></i>Transfer Client</a></li>
         <li><a href="{% url 'micro_admin:updateclientprofile' client.id %}"><i class="fa fa-file-image-o home-color"></i>Update Profile</a></li>
         <li><a href="{% url 'micro_admin:deleteclientprofile' client.id %}"><i class="fa fa-trash-o home-color"></i>Delete</a></li>
@@ -34,7 +34,7 @@ $(document).ready(function()
       function(e)
       {
         e.preventDefault();
-        alert('<h1> dfsef</h1>')
+        alert('Client Signature')
       }
     )
 });

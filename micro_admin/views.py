@@ -1,12 +1,13 @@
 from django.conf import settings
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth import login, authenticate, logout
 import json
 from django.views.decorators.csrf import csrf_protect, csrf_exempt
-from micro_admin.models import User, Branch, Clients, Groups
-from micro_admin.forms import UserForm, BranchForm, ClientsForm
+from micro_admin.models import User, Branch, Clients, Groups, Centers
+from micro_admin.forms import UserForm, BranchForm, ClientsForm, GroupsForm, CentersForm
 import datetime
+from django.core.urlresolvers import reverse
 
 
 def index(request):
@@ -116,9 +117,14 @@ def create_branch(request):
             phone_number = request.POST.get("phone_number")
             pincode = request.POST.get("pincode")
             branch = Branch.objects.create(name=name,opening_date=opening_date,country=country,state=state,district=district,city=city,area=area,phone_number=phone_number,pincode=pincode)
-            return render_to_response("successfuly_branchcreated.html", {'branch':branch})
+            return render_to_response("branch_profile.html", {'branch':branch})
         else:
             return HttpResponse("Invalid Data")
+
+
+def branchprofile(request, branch):
+    branch = Branch.objects.get(id=branch)
+    return render(request, 'branch_profile.html', {'branch':branch})
 
 
 def branch_list(request):
@@ -175,7 +181,6 @@ def update_profile(request,client):
         client = Clients.objects.get(id=client)
         return render(request,'update_clientprofile.html',{'client':client})
     else:
-        print 'hi'
         client = Clients.objects.get(id=client)
         photo=request.FILES.get("photo")
         signature = request.FILES.get("signature")
@@ -203,8 +208,8 @@ def create_group(request):
         clients = Clients.objects.all()
         return render(request, 'creategroup.html', {'branches':branches, 'clients':clients})
     else:
-        groups_form = GroupsForm(request.POST)
-        if groups_form.is_valid():
+        group_form = GroupsForm(request.POST)
+        if group_form.is_valid():
             name = request.POST.get('name')
             account_type = request.POST.get('account_type')
             account_number = request.POST.get('account_number')
@@ -218,9 +223,11 @@ def create_group(request):
                 client = Clients.objects.get(id=client)
                 group.clients.add(client)
                 group.save()
-            return HttpResponse("Group created sucessfully and added clients")
+            data = {'error':False, 'group_id':group.id}
+            return HttpResponse(json.dumps(data))
         else:
-            return HttpResponse("Invalid data")
+            data = {'error':True, 'message':group_form.errors}
+            return HttpResponse(json.dumps(data))
 
 
 @csrf_exempt
@@ -243,9 +250,11 @@ def create_center(request):
                 group = Groups.objects.get(id=group)
                 center.groups.add(group)
                 center.save()
-            return HttpResponse("Center created sucessfully")
+            data = {'error':False, 'center_id':center.id}
+            return HttpResponse(json.dumps(data))
         else:
-            return HttpResponse("Invalid data")
+            data = {'error':True, 'message':center_form.errors}
+            return HttpResponse(json.dumps(data))
 
 
 @csrf_exempt

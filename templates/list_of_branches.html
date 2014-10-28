@@ -24,7 +24,7 @@
       <tbody>
       {% for branch in branches_list %}
         <tr>
-          <td>{{branch.name}}</td>
+          <td><a href="{% url 'micro_admin:branchprofile' branch.id %}">{{branch.name}}</a></td>
           <td>{{branch.opening_date}}</td>
           <td>{{branch.phone_number}}</td>
           <td></td>
